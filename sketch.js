@@ -62,8 +62,11 @@ function setup() {
   block25 = new Block(700,95,30,40);
     
   //stone
-  stoneObj=new Stone(35,20,30); 
+  stoneObj=new Stone(35,20,30);
+  World.add(world,stoneObj);
+ 
    
+  slingShot = new Slingshot(this.stoneObj,{x:100,y:200});
 
 
   
@@ -120,5 +123,8 @@ function draw() {
   block25.display();
  
   stoneObj.display();
+  
+  slingShot.display();
+
 
 }
