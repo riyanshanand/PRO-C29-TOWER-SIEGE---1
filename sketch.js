@@ -61,12 +61,13 @@ function setup() {
   //right top
   block25 = new Block(700,95,30,40);
     
-  //stone
-  stoneObj=new Stone(35,20,30);
-  World.add(world,stoneObj);
+//ball holder with slings
+ball = Bodies.circle(50,200,20);
+World.add(world,ball);
+
  
    
-  slingShot = new Slingshot(this.stoneObj,{x:100,y:200});
+  slingShot = new Slingshot(this.ball,{x:100,y:200});
 
 
   
@@ -122,9 +123,17 @@ function draw() {
   fill("pink");
   block25.display();
  
-  stoneObj.display();
-  
+  imageMode(CENTER)
+  image(polygon_img ,ball.position.x,ball.position.y,40,40);
+
   slingShot.display();
 
 
+}
+
+function mouseDragged(){
+  Matter.Body.setPosition(this.ball,{x:mouseX,y:mouseY});
+}
+function mouseReleased(){
+  slingShot.fly();
 }
